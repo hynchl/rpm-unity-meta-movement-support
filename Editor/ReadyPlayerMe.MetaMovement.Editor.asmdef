@@ -4,7 +4,7 @@
     "references": [
         "ReadyPlayerMe.MetaMovement",
         "ReadyPlayerMe.Core",
-        "Meta.Movement",
+        "Meta.XR.Movement",
         "Oculus.VR"
     ],
     "includePlatforms": [

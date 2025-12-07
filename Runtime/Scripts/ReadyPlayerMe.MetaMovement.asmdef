@@ -3,7 +3,7 @@
     "rootNamespace": "",
     "references": [
         "ReadyPlayerMe.Core",
-        "Meta.Movement",
+        "Meta.XR.Movement",
         "Oculus.VR",
         "Unity.Animation.Rigging"
     ],
