@@ -1,6 +1,6 @@
-using Oculus.Movement.AnimationRigging;
-using Oculus.Movement.Tracking.Deprecated;
-using Oculus.Movement.Utils;
+using Meta.XR.Movement.AnimationRigging;
+using Meta.XR.Movement.Tracking.Deprecated;
+using Meta.XR.Movement.Utils;
 using ReadyPlayerMe.Core;
 using UnityEditor;
 using UnityEditor.SceneManagement;
@@ -21,7 +21,7 @@ namespace ReadyPlayerMe.MetaMovement.Editor
             if (activeGameObject != null)
             {
                 var animator = activeGameObject.GetComponent<Animator>();
-                if(animator == null)
+                if (animator == null)
                 {
                     Debug.LogWarning("No Animator component found on the selected GameObject. Please add an Animator component to the GameObject.");
                     return;
@@ -29,7 +29,7 @@ namespace ReadyPlayerMe.MetaMovement.Editor
                 var restPoseObjectHumanoid = AddComponentsHelper.GetRestPoseObject(AddComponentsHelper.CheckIfTPose(animator));
                 AnimationUtilities.UpdateToAnimatorPose(animator);
                 HelperMenusBody.SetupCharacterForAnimationRiggingRetargetingConstraints(activeGameObject, restPoseObjectHumanoid, true, true);
-                if(LayerMask.NameToLayer(META_CHARACTER_LAYER) >= 0)
+                if (LayerMask.NameToLayer(META_CHARACTER_LAYER) >= 0)
                 {
                     MetaMovementHelper.SetLayerRecursively(activeGameObject, LayerMask.NameToLayer(META_CHARACTER_LAYER));
                     return;
@@ -46,7 +46,7 @@ namespace ReadyPlayerMe.MetaMovement.Editor
                 Debug.LogWarning("No GameObject selected. Please select a GameObject to add components to.");
             }
         }
-        
+
         [MenuItem(META_SETUP_MENU_FUNCTION, true)]
         private static bool ValidateMetaMovementSetup()
         {

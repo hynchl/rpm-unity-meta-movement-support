@@ -1,5 +1,5 @@
-using Oculus.Movement;
-using Oculus.Movement.Utils;
+using Meta.XR.Movement;
+using Meta.XR.Movement.Utils;
 using ReadyPlayerMe.Core;
 using UnityEngine;
 using UnityEngine.Events;
@@ -28,8 +28,8 @@ namespace ReadyPlayerMe.MetaMovement
         /// </summary>
         [SerializeField]
         [Tooltip(RetargetingMenuTooltips.RestTPoseObject)]
-        protected RestPoseObjectHumanoid restTPoseObject_M;        
-        
+        protected RestPoseObjectHumanoid restTPoseObject_M;
+
         /// <summary>
         /// The rest T-pose humanoid object for feminine avatars.
         /// </summary>
@@ -43,20 +43,20 @@ namespace ReadyPlayerMe.MetaMovement
         [SerializeField, Tooltip("The configuration which to load the RPM avatar with. If not set, it will use the settings from the global AvatarLoaderSettings.")]
         protected AvatarConfig avatarConfig;
 
-        
+
         /// <summary>
         /// If set, the loaded avatar will use this animation avatar instead of the default.
         /// </summary>
         [SerializeField, Tooltip("If set, the loaded avatar will use this animation avatar instead of the one from the default.")]
         protected Avatar animationAvatarOverride;
-        
+
         /// <summary>
         /// Event triggered when the avatar object is successfully loaded.
         /// </summary>
         public UnityEvent<GameObject> OnAvatarObjectLoaded;
-        
+
         private GameObject avatar;
-        
+
         /// <summary>
         /// Initiates the process to load an avatar from a specified URL.
         /// </summary>
@@ -110,7 +110,7 @@ namespace ReadyPlayerMe.MetaMovement
             MetaMovementHelper.RuntimeRetargetingSetup(avatar, avatarGender);
             OnAvatarObjectLoaded?.Invoke(avatar);
         }
-        
+
         /// <summary>
         /// Cleanup method called when the script or GameObject is destroyed.
         /// </summary>

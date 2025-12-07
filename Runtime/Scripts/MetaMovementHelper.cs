@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using Oculus.Movement.AnimationRigging;
-using Oculus.Movement.Tracking.Deprecated;
-using Oculus.Movement.Utils;
+using Meta.XR.Movement.AnimationRigging;
+using Meta.XR.Movement.Tracking.Deprecated;
+using Meta.XR.Movement.Utils;
 using ReadyPlayerMe.Core;
 using UnityEditor;
 using UnityEngine;
@@ -14,14 +14,14 @@ namespace ReadyPlayerMe.MetaMovement
     public static class MetaMovementHelper
     {
         // Names of twist bones used for setup in avatars.
-        private static readonly string[] TwistBoneNames = 
+        private static readonly string[] TwistBoneNames =
         {
             "Armature/Hips/Spine/Spine1/Spine2/LeftShoulder/LeftArm/LeftArmTwist",
             "Armature/Hips/Spine/Spine1/Spine2/LeftShoulder/LeftArm/LeftArmTwist/LeftForeArm/LeftForeArmTwist",
             "Armature/Hips/Spine/Spine1/Spine2/RightShoulder/RightArm/RightArmTwist",
             "Armature/Hips/Spine/Spine1/Spine2/RightShoulder/RightArm/RightArmTwist/RightForeArm/RightForeArmTwist"
         };
-        
+
         /// <summary>
         /// Sets up runtime retargeting for the avatar, including adding necessary components and configuring settings.
         /// </summary>
@@ -30,11 +30,11 @@ namespace ReadyPlayerMe.MetaMovement
         public static void RuntimeRetargetingSetup(GameObject avatar, RestPoseObjectHumanoid restPoseObjectHumanoid)
         {
             var animator = avatar.GetComponent<Animator>();
-            if(animator != null)
+            if (animator != null)
             {
                 AnimationUtilities.UpdateToAnimatorPose(animator);
             }
-            
+
             AddComponentsRuntime.SetupCharacterForAnimationRiggingRetargeting(avatar.gameObject,
                 true, true, restPoseObjectHumanoid);
             var deformation = avatar.GetComponentInChildren<FullBodyDeformationConstraint>();
@@ -80,7 +80,7 @@ namespace ReadyPlayerMe.MetaMovement
             var rightShoulder = retargetingLayer.GetFindAdjustment(HumanBodyBones.RightShoulder);
             if (leftShoulder != null)
             {
-                leftShoulder.RotationChange = Quaternion.Euler(0, 0, 345f);;
+                leftShoulder.RotationChange = Quaternion.Euler(0, 0, 345f); ;
             }
             if (rightShoulder != null)
             {
@@ -147,7 +147,7 @@ namespace ReadyPlayerMe.MetaMovement
                 arKitFace.Mappings[49] = OVRFaceExpressions.FaceExpression.TongueOut;
             }
         }
-        
+
         /// <summary>
         /// Sets up the HierarchyTwist component on the avatar, configuring the twist bones.
         /// </summary>
@@ -170,9 +170,9 @@ namespace ReadyPlayerMe.MetaMovement
                 }
             }
             twistboneComponent.SetupTwistBones(twistBoneList.ToArray(), 0.5f, 0f);
-            #if UNITY_EDITOR
+#if UNITY_EDITOR
             EditorUtility.SetDirty(twistboneComponent); // Mark the component as dirty to save changes in the editor.
-            #endif
+#endif
         }
 
         /// <summary>
@@ -195,7 +195,7 @@ namespace ReadyPlayerMe.MetaMovement
                     }
                     continue;
                 }
- 
+
                 if (arkitFaceComponent != null) continue;
                 arkitFaceComponent = skinMeshRenderer.gameObject.AddComponent<ARKitFace>();
                 ApplyARKitFaceSettings(arkitFaceComponent);
